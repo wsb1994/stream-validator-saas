@@ -1,0 +1,11 @@
+/Users/wsb/Documents/Binaries/stream-validator-saas/second_rust_service/target/debug/deps/libcookie_factory-1dc903468e4ad1e7.rmeta: /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/lib.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/gen.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/internal.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/bytes.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/combinator.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/multi.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/sequence.rs
+
+/Users/wsb/Documents/Binaries/stream-validator-saas/second_rust_service/target/debug/deps/cookie_factory-1dc903468e4ad1e7.d: /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/lib.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/gen.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/internal.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/bytes.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/combinator.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/multi.rs /Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/sequence.rs
+
+/Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/lib.rs:
+/Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/gen.rs:
+/Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/internal.rs:
+/Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/bytes.rs:
+/Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/combinator.rs:
+/Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/multi.rs:
+/Users/wsb/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cookie-factory-0.3.3/src/sequence.rs:
