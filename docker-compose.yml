@@ -555,6 +555,10 @@ services:
         condition: service_started
       producer-service:
         condition: service_started
+      kong:
+        condition: service_started
+      redpanda:
+        condition: service_started
     env_file:
       - .env
     volumes:
@@ -570,10 +574,27 @@ services:
         condition:  service_healthy
       rabbitmq:
         condition: service_started
+      kong:
+        condition: service_started
+      redpanda:
+        condition: service_started
     env_file:
       - .env
     volumes:
       - ../.env:/app/.env
+  redpanda:
+    image: redpandadata/redpanda:v23.1.1 # Use the latest stable version
+    container_name: redpanda
+    environment:
+      - REDPANDA_MODE=standalone
+      - REDPANDA_LISTENERS=INSIDE://redpanda:9092
+      - REDPANDA_ADVERTISED_LISTENERS=INSIDE://redpanda:9092
+      - REDPANDA_LISTENER_SECURITY_PROTOCOL=PLAINTEXT
+      - REDPANDA_KAFKA_API_LISTENER=INSIDE
+      - REDPANDA_ENABLE_KAFKA_API=true
+    ports:
+      - "9092:9092"  # Exposing Kafka API port
+    restart: unless-stopped
 
 volumes:
   db-config:

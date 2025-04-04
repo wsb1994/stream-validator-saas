@@ -1,5 +1,4 @@
 use dotenv::dotenv;
-use messages::messages::NatsClient;
 use std::env;
 
 use models::models::Stream;
@@ -14,7 +13,6 @@ use video::video::check_hls_stream;
 
 pub mod models;
 pub mod video;
-pub mod messages;
 
 
 #[tokio::main]
@@ -28,7 +26,6 @@ async fn main() -> LapinResult<()> {
     let conn = Connection::connect(&addr, ConnectionProperties::default()).await?;
     let channel = conn.create_channel().await?;
 
-    let _build_nats_client = NatsClient::new().await;
 
     for i in 0..16 {
         let mut consumer = channel
