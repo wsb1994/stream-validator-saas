@@ -13,3 +13,5 @@ chrono = { version = "0.4", features = ["serde"] }
 tokio-amqp = "2.0.0"
 lapin="*"
 futures="*"
+async-nats = "0.40.0"
+bytes = "*"
