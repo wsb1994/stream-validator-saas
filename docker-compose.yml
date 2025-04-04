@@ -480,6 +480,12 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:15672"] # Check management plugin
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
     volumes:
       - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
 
@@ -536,6 +542,38 @@ services:
         "-c",
         "/app/bin/migrate && /app/bin/supavisor eval \"$$(cat /etc/pooler/pooler.exs)\" && /app/bin/server"
       ]
+  playback-service:
+    build:
+      context: ./playback_service
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition:  service_healthy
+      analytics:
+        condition:  service_healthy
+      rabbitmq:
+        condition: service_started
+      producer-service:
+        condition: service_started
+    env_file:
+      - .env
+    volumes:
+      - ../.env:/app/.env
+  producer-service:
+    build:
+      context: ./producer_service
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition:  service_healthy
+      analytics:
+        condition:  service_healthy
+      rabbitmq:
+        condition: service_started
+    env_file:
+      - .env
+    volumes:
+      - ../.env:/app/.env
 
 volumes:
   db-config:

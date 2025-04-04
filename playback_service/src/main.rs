@@ -1,17 +1,13 @@
 use dotenv::dotenv;
 use std::env;
-use std::io::{BufRead, BufReader, Read};
-use std::process::{Command, Stdio};
+
 
 use models::models::Stream;
-use std::sync::Arc;
-use tokio::runtime::Runtime;
-use tokio_amqp::*;
+
 
 use futures::StreamExt;
 use lapin::{
-    Connection, ConnectionProperties, Error as LapinError, Result as LapinResult, options::*,
-    types::FieldTable,
+    options::*, protocol::queue, types::FieldTable, Connection, ConnectionProperties, Error as LapinError, Result as LapinResult
 }; //Import lapin::Error
 use serde_json;
 use video::video::check_hls_stream;
@@ -25,13 +21,16 @@ async fn main() -> LapinResult<()> {
 
     let addr =
         std::env::var("AMQP_ADDR").unwrap_or_else(|_| "amqp://admin:admin@localhost:5672".into());
+        let queue_name =
+        std::env::var("AMQP_QUEUE").unwrap_or_else(|_| "playback_service".into());
+    println!("addr: {}", addr);
     let conn = Connection::connect(&addr, ConnectionProperties::default()).await?;
     let channel = conn.create_channel().await?;
 
     for i in 0..16 {
         let mut consumer = channel
             .basic_consume(
-                "example_queue",
+                &queue_name,
                 &format!("playback_service{}", i),
                 BasicConsumeOptions::default(),
                 FieldTable::default(),

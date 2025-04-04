@@ -14,9 +14,10 @@ use client::rabbit_client::build_and_run_rabbitmq_system;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     dotenv().ok(); // Load .env file
+    
     loop {
-        let build_and_run_rabbitmq_system = build_and_run_rabbitmq_system().await;
+        let _build_and_run_rabbitmq_system = build_and_run_rabbitmq_system().await;
     }
 
-    Ok(())
+   // Ok(())
 }

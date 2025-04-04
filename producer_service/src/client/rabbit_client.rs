@@ -1,4 +1,4 @@
-use chrono::format;
+
 use dotenv::dotenv;
 use lapin::BasicProperties;
 use lapin::{
@@ -7,9 +7,7 @@ use lapin::{
     types::FieldTable,
 };
 use models::models::Stream;
-use serde_json::json;
 use std::env;
-use tokio::runtime::Runtime;
 use tokio::time::{Duration, sleep};
 
 use crate::models;
@@ -23,7 +21,7 @@ impl RabbitMQClient {
         dotenv().ok(); // Load .env file
 
         // Get RabbitMQ connection URL from environment variables
-        let rabbitmq_url = env::var("RABBITMQ_URL")
+        let rabbitmq_url = env::var("AMQP_ADDR")
             .unwrap_or_else(|_| "amqp://admin:admin@localhost:5672".to_string());
 
         // Open a connection to RabbitMQ server
@@ -40,10 +38,12 @@ impl RabbitMQClient {
     }
 
     pub async fn declare_queue(&self) -> Result<String, lapin::Error> {
+        let queue_name = env::var("AMQP_QUEUE")
+            .unwrap_or_else(|_| "video_playback_job".to_string());
         let queue = self
             .channel
             .queue_declare(
-                "example_queue",
+                &queue_name,
                 QueueDeclareOptions::default(),
                 FieldTable::default(),
             )
