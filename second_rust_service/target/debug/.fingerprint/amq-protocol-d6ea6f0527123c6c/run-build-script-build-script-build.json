@@ -1,1 +1,0 @@
-{"rustc":4723136837156968084,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[7707838350479936199,"build_script_build",false,10326776434633345248]],"local":[{"RerunIfEnvChanged":{"var":"AMQ_PROTOCOL_CODEGEN_DIR","val":null}},{"RerunIfEnvChanged":{"var":"AMQ_PROTOCOL_CODEGEN_FILE","val":null}}],"rustflags":[],"config":0,"compile_kind":0}
