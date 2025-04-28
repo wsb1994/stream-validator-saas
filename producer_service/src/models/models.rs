@@ -1,5 +1,3 @@
-use dotenv::dotenv;
-use postgrest::Postgrest;
 use serde::{Deserialize, Serialize};
 use std::env;
 use tokio;

@@ -80,9 +80,11 @@ impl RabbitMQClient {
 }
 
 pub async fn build_and_run_rabbitmq_system() {
+
+
     // Create the RabbitMQ client
     let client = match RabbitMQClient::new().await {
-        Ok(client) => client,
+        Ok(client) => {client},
         Err(err) => {
             eprintln!("Failed to connect to RabbitMQ: {}", err);
             return;
@@ -98,25 +100,31 @@ pub async fn build_and_run_rabbitmq_system() {
         }
     };
     loop {
-        let streams: Vec<Stream> = models::models::get_streams()
-        .await
-        .unwrap();
-
-        sleep(Duration::from_secs(3)).await;
+        let streams: Result<Vec<Stream>,_> = models::models::get_streams()
+        .await;
         
-        for stream in streams {
-            println!("ID: {:?}, Content: {:?}", stream.id, stream);
-
-            let message = serde_json::to_string(&stream).unwrap().as_bytes().to_vec();
-
-            let exchange_name = ""; // Use default exchange
-            let routing_key = &queue_name; // Use the queue name as the routing key
-            if let Err(err) = client
-                .publish_message(exchange_name, routing_key, message)
-                .await
-            {
-                eprintln!("Failed to publish message: {}", err);
-            }
+        match streams{
+            Ok(streams) => {
+                sleep(Duration::from_millis(7000)).await;
+        
+                for stream in streams {
+                    println!("ID: {:?}, Content: {:?}", stream.id, stream);
+        
+                    let message = serde_json::to_string(&stream).unwrap().as_bytes().to_vec();
+        
+                    let exchange_name = ""; // Use default exchange
+                    let routing_key = &queue_name; // Use the queue name as the routing key
+                    if let Err(err) = client
+                        .publish_message(exchange_name, routing_key, message)
+                        .await
+                    {
+                        eprintln!("Failed to publish message: {}", err);
+                    }
+                }
+            },
+            Err(_) =>{}
         }
+
+       
     }
 }
