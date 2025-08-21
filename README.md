@@ -11,7 +11,11 @@ Official docs: [Self-hosting with Docker](https://supabase.com/docs/guides/hosti
    ```bash
    cp .env.example .env
 2. ***run the process***
- ```bash
- docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up -d
- ```
+    ```bash
+    docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up -d
+    ```
 3.observe the production service via docker logs, submit any improvements via PR, or just enjoy the demo.
+4. Run the reset script to fully erase everything, environment variables, passwords, etc. 
+   ```bash
+      bash reset.sh
+   ```
