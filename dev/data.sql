@@ -53,8 +53,18 @@ create table public.streams (
   name text not null,
   url text not null,
   is_enabled boolean not null default true,
-  is_playing boolean not null default true,
-  last_playback timestamp with time zone null,
   constraint streams_pkey primary key (id),
-  tag text,
+  tag text
 ) TABLESPACE pg_default;
+
+
+INSERT INTO public.streams
+("id", "created_at", "name", "url", "is_enabled", "tag") 
+VALUES 
+  ('1', '2025-03-30 21:19:44.426397+00', 'Big Buck Bunny', 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8', 'true', 'default'),
+  ('2', '2025-03-30 21:19:59.903061+00', 'Alternate Big Buck Bunny 480p', 'https://test-streams.mux.dev/x36xhzz/url_6/193039199_mp4_h264_aac_hq_7.m3u8', 'true', 'default'),
+  ('3', '2025-03-30 21:20:18.525187+00', 'ARTE China', 'https://test-streams.mux.dev/test_001/stream.m3u8', 'true', 'default'),
+  ('4', '2025-03-30 21:20:31.224362+00', 'Weird Video', 'https://test-streams.mux.dev/issue666/playlists/cisq0gim60007xzvi505emlxx.m3u8', 'true', 'default'),
+  ('5', '2025-03-30 21:22:02.612843+00', 'Advertisement Included', 'https://test-streams.mux.dev/dai-discontinuity-deltatre/manifest.m3u8', 'true', 'default'),
+  ('6', '2025-03-30 21:22:28.324526+00', 'Turntable', 'https://test-streams.mux.dev/pts_shift/master.m3u8', 'true', 'default'),
+  ('7', '2025-03-30 21:22:38.143845+00', 'Tears of Steel', 'https://test-streams.mux.dev/tos_ismc/main.m3u8', 'true', 'default');
