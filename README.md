@@ -12,6 +12,6 @@ Official docs: [Self-hosting with Docker](https://supabase.com/docs/guides/hosti
    cp .env.example .env
 2. ***run the process***
  ```bash
- docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml down
+ docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml -d
  ```
 3.observe the production service via docker logs, submit any improvements via PR, or just enjoy the demo.
