@@ -55,5 +55,6 @@ create table public.streams (
   is_enabled boolean not null default true,
   is_playing boolean not null default true,
   last_playback timestamp with time zone null,
-  constraint streams_pkey primary key (id)
+  constraint streams_pkey primary key (id),
+  tag text,
 ) TABLESPACE pg_default;
